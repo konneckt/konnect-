@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<!------- google font inter ------->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!--------header css link ----->
+<link rel="stylesheet" href="header.css">
+<!----- general css link ------>
+<link rel="stylesheet" href="general.css">
+<!----- sidebar css link ------>
+<link rel="stylesheet" href="sidebar.css">
+<!----- main css link ------>
+<link rel="stylesheet" href="main.css">
+<!----- media css link ------>
+<link rel="stylesheet" href="media.css">
+    <title>KONNEKT</title>
+</head>
+<body>
+<!--------- Header section---------->
+<header class="header-section">
+<section class="app-section">
+   
+
+<img class="konnect-icon" src="knnockt.jfif">
+
+    <p class="KONNECT-app-name">
+        KONNEKT
+    </p>
+</section>
+
+<section class="searchbar-container">
+ <input type="text" placeholder="What's around you? Find it here....." class="search-bar">
+
+ <div class="search-icon-container">
+ <img src="search-icon.png" class="search-icon">
+ <p class="drop-down-text">Search nearby</p>
+ </div>
+</section>
+
+<section class="profile-notifications-header">
+    <button class="icon-notifications-btn" data-tooltip="Notifications">
+  <i data-lucide="bell-dot" class="notifications">
+       
+    </i>
+     <span class="notifications-update">3</span>
+    </button>
+  
+   
+<div class="profile-container"> 
+  <i data-lucide="ellipsis" class="more-icon"></i>
+    <i data-lucide="user-round" class="user-icon"></i>
+    
+   
+</div>
+    <button class="login">login</button>
+</section>
+</header>
+
+
+<!--------- side bar---------->
+<header class="sidebar-section">
+    <section class="sidebar-section-1">
+       
+<div class="icon-sidebar-btn">
+  <i data-lucide="compass" class="home-icon"></i>
+ 
+  
+    <span class="tooltip">Discover</span>
+</div>
+  <div class="icon-sidebar-btn">
+  <i data-lucide="messages-square" class="home-icon"></i>
+    <span class="tooltip">Chats</span>
+</div>
+<div class="icon-sidebar-btn">
+  <i data-lucide="users" class="home-icon"></i>
+    <span class="tooltip">people</span>
+</div>
+<div class="icon-sidebar-btn">
+  <i data-lucide="map-pin" class="home-icon"></i>
+    <span class="tooltip">Location</span>
+</div>
+
+    </section>
+
+    <section class="sidebar-section-2">
+  <div class="icon-sidebar-btn">
+  <i data-lucide="plus-circle" class="home-icon"></i>
+    <span class="tooltip">Create</span>
+</div>
+<div class="icon-sidebar-btn">
+  <i data-lucide="cog" class="home-icon"></i>
+    <span class="tooltip">settings</span>
+</div>
+<div class="icon-sidebar-btn">
+  <i data-lucide="circle-user" class="home-icon"></i>
+    <span class="tooltip">profile</span>
+</div>
+    </section>
+    
+</header>
+
+
+<!--------- main page---------->
+<main class="main-section">
+
+    <!--------- user first site ---------->
+    <div class="users-site-container">
+        <i data-lucide="search" class="user-site-search-container"></i>
+        <h1 class="user-site-text">
+            Try and search something nearby
+        </h1>
+     <h2 class="user-site-2">Discover what's near you</h2>
+     <h3 class="user-site-3">search for resturants,hotels, and places to visit around you.</h3>
+    </div>
+
+<!--------- user experience pick---------->
+    <div class="search-experince-container">
+    <div class="search-experience-pick-border">
+       <div class="border-pick">
+        <i data-lucide="layout-grid" class="categories-home" ></i>
+             <p class="categories-under-text">All</p>
+       </div>
+  
+       
+ 
+     <div class="border-pick-2" id="pills">
+        <i data-lucide="chevron-left" class="categories-home-2"></i>
+    </div>
+
+            <div class="border-pick-3">
+        <i data-lucide="chef-hat" class="categories-home-3"></i>
+             <p class="categories-under-text-2">Resturants</p>
+  </div>
+  
+             <div class="border-pick-3">
+        <i data-lucide="school" class="categories-home-3"></i>
+             <p class="categories-under-text-2">school</p>
+  </div>
+          <div class="border-pick-3">
+        <i data-lucide="pizza" class="categories-home-3"></i>
+             <p class="categories-under-text-2">Fast-food</p>
+  </div>
+          <div class="border-pick-3">
+        <i data-lucide="scissors" class="categories-home-3"></i>
+             <p class="categories-under-text-2">salon</p>
+  </div>
+          <div class="border-pick-3">
+        <i data-lucide="smartphone" class="categories-home-3"></i>
+             <p class="categories-under-text-2">Electronics</p>
+  </div>
+          <div class="border-pick-3">
+        <i data-lucide="car" class="categories-home-3"></i>
+             <p class="categories-under-text-2">Auto</p>
+  </div>
+          <div class="border-pick-3">
+        <i data-lucide="hospital" class="categories-home-3"></i>
+             <p class="categories-under-text-2">Health</p>
+  </div>
+          <div class="border-pick-3">
+        <i data-lucide="dumbbell" class="categories-home-3"></i>
+             <p class="categories-under-text-2">Gym</p>
+  </div> 
+    
+    <div class="border-pick-3">
+        <i data-lucide="book-open" class="categories-home-3"></i>
+             <p class="categories-under-text-2">Book-shop</p>
+  </div> 
+
+      <div class="border-pick-3">
+        <i data-lucide="landmark" class="categories-home-3"></i>
+             <p class="categories-under-text-2">Bank</p>
+  </div> 
+
+      <div class="border-pick-3">
+        <i data-lucide="church" class="categories-home-3"></i>
+             <p class="categories-under-text-2">worship</p>
+  </div> 
+
+    
+     <div class="border-pick-2">
+        <i data-lucide="chevron-right" class="categories-home-2"></i>
+    </div>
+
+ 
+  </div> 
+
+  <!--------- user experience ---------->
+  <div class="user-experience-container">
+
+    <button class="user-experience-border">
+<h2 class="user-experience-text">
+  Discover
+ </h2>
+    </button>
+
+        <button class="user-experience-border">
+<h2 class="user-experience-text">
+  Community
+ </h2>
+    </button>
+  </div>
+</div>
+  <div class="user-scroll-topbar">
+    Discover
+  </div>
+
+  <!--------- user experience popular near you---------->
+  <div class="border1-user-experience">
+    <h2 class="border1-text">NEAR YOU</h2>
+    <p class="border2-text">Explore the best spots near you, search places and navigate there instantly </p>
+<div class="border1-user-experience-extra">
+
+<div class="image-border">
+  <div class="small-text-border">
+  <p class="small-text">Resturants</p>
+  </div>
+
+<img src="popular-image.jpg" class="popular-image">
+
+<button class="view-drection-btn">
+  View Direction
+</button>
+<button class="view-drection-btn-2">
+Search places
+</button>
+
+</div>
+
+
+
+
+
+
+
+<div class="image-border">
+  <div class="small-text-border">
+  <p class="small-text">Gym</p>
+  </div>
+
+<img src="gym.jpg" class="popular-image">
+
+<button class="view-drection-btn">
+  View Direction
+</button>
+<button class="view-drection-btn-2">
+  Search places
+</button>
+
+</div>
+
+
+
+<div class="image-border">
+  <div class="small-text-border">
+  <p class="small-text">HealthCenter</p>
+  </div>
+
+<img src="health.jpg" class="popular-image">
+
+<button class="view-drection-btn">
+  View Direction
+</button>
+<button class="view-drection-btn-2">
+  Search places
+</button>
+
+</div>
+
+
+<div class="image-border">
+  <div class="small-text-border">
+  <p class="small-text">StudyCenter</p>
+  </div>
+
+<img src="institution.jpg" class="popular-image">
+
+<button class="view-drection-btn">
+  View Direction
+</button>
+<button class="view-drection-btn-2">
+  Search places
+</button>
+
+
+</div>
+
+
+
+
+ 
+  </div>
+  </div>
+
+ <a href="" class="search-more-btn">search more</a>
+ <div class="TrendingNow-container">
+  <p class="TrendingNow-text">Trending now</p>
+  <div  class="trending-choose-container">
+<div class="trending-choose-border">
+  <p class="trending-choose-border-text">
+    Most searched
+  </p>
+</div>
+
+<div class="trending-choose-border">
+  <p class="trending-choose-border-text">
+    Best review
+  </p>
+</div>
+
+<div class="trending-choose-border">
+  <p class="trending-choose-border-text">
+    Post
+  </p>
+</div>
+
+<div class="trending-choose-border">
+  <p class="trending-choose-border-text">
+    New
+  </p>
+</div>
+
+
+<div class="trending-choose-border">
+  <p class="trending-choose-border-text">
+    Deals
+  </p>
+</div>
+
+
+
+
+
+
+  </div>
+  <div class="trending-view-container">
+<div class="trending-view-border">
+  <img src="auto.jpg" class="trending-image">
+  <div class="trending-more-image-border">
+<img src="gym.jpg" class="trending-more-image">
+  </div>
+    <div class="trending-info">
+<h2 class="trending-info-name">cafe</h2>
+<h3 class="trending-info-name-2">the silk cafe</h3>
+<div class="trending-info-personal">
+<p class="location-trending"><i data-lucide="map-pin" class="trending-location-icon"></i>Alimosho lagos</p>
+<p class="searches-trending">1.2k searches today for <span class="what-searched">coffe</span> </p>
+<p class="distance-trending-text">0.9km away <a href="#" class="see-all">see all</a></p>
+</div>
+
+  </div>
+
+</div>
+
+
+
+<div class="trending-view-border">
+  <img src="auto.jpg" class="trending-image">
+  <div class="trending-more-image-border">
+<img src="gym.jpg" class="trending-more-image">
+  </div>
+  
+   <div class="trending-info">
+<h2 class="trending-info-name">cafe</h2>
+<h3 class="trending-info-name-2">the silk cafe</h3>
+<div class="trending-info-personal">
+<p class="location-trending"><i data-lucide="map-pin" class="trending-location-icon"></i>Alimosho lagos</p>
+<p class="searches-trending">1.2k searches today for <span class="what-searched">coffe</span> </p>
+<p class="distance-trending-text">0.9km away <a href="#" class="see-all">see all</a></p>
+</div>
+
+  </div>
+</div>
+
+
+<div class="trending-view-border">
+  <img src="auto.jpg" class="trending-image">
+   <div class="trending-more-image-border">
+<img src="gym.jpg" class="trending-more-image">
+  </div>
+  <div class="trending-info">
+<h2 class="trending-info-name">cafe</h2>
+<h3 class="trending-info-name-2">the silk cafe</h3>
+<div class="trending-info-personal">
+<p class="location-trending"><i data-lucide="map-pin" class="trending-location-icon"></i>Alimosho lagos</p>
+<p class="searches-trending">1.2k searches today for <span class="what-searched">coffe</span> </p>
+<p class="distance-trending-text">0.9km away <a href="#" class="see-all">see all</a></p>
+</div>
+
+  </div>
+</div>
+
+<div class="trending-view-border">
+  <img src="auto.jpg" class="trending-image">
+  <div class="trending-more-image-border">
+<img src="gym.jpg" class="trending-more-image">
+  </div>
+  
+   <div class="trending-info">
+<h2 class="trending-info-name">cafe</h2>
+<h3 class="trending-info-name-2">the silk cafe</h3>
+<div class="trending-info-personal">
+<p class="location-trending"><i data-lucide="map-pin" class="trending-location-icon"></i>Alimosho lagos</p>
+<p class="searches-trending">1.2k searches today for <span class="what-searched">coffe</span> </p>
+<p class="distance-trending-text">0.9km away <a href="#" class="see-all">see all</a></p>
+</div>
+
+  </div>
+</div>
+
+
+<div class="trending-view-border">
+  <img src="auto.jpg" class="trending-image">
+  <div class="trending-more-image-border">
+<img src="gym.jpg" class="trending-more-image">
+  </div>
+  
+  <div class="trending-info">
+<h2 class="trending-info-name">cafe</h2>
+<h3 class="trending-info-name-2">the silk cafe</h3>
+<div class="trending-info-personal">
+<p class="location-trending"><i data-lucide="map-pin" class="trending-location-icon"></i>Alimosho lagos</p>
+<p class="searches-trending">1.2k searches today for <span class="what-searched">coffe</span> </p>
+<p class="distance-trending-text">0.9km away <a href="#" class="see-all">see all</a></p>
+</div>
+
+  </div>
+</div>
+
+<div class="trending-view-border">
+  <img src="auto.jpg" class="trending-image">
+<div class="trending-more-image-border">
+<img src="gym.jpg" class="trending-more-image">
+  </div>
+  
+   <div class="trending-info">
+<h2 class="trending-info-name">cafe</h2>
+<h3 class="trending-info-name-2">the silk cafe</h3>
+<div class="trending-info-personal">
+<p class="location-trending"><i data-lucide="map-pin" class="trending-location-icon"></i>Alimosho lagos</p>
+<p class="searches-trending">1.2k searches today for <span class="what-searched">coffe</span> </p>
+<p class="distance-trending-text">0.9km away <a href="#" class="see-all">see all</a></p>
+</div>
+
+  </div>
+
+</div>
+  </div>
+
+
+ </div>
+</main>
+
+</body>
+
+
+<!------ lucide icon link ------->
+<script src="https://unpkg.com/lucide@latest">
+    
+</script>
+<script>
+lucide.createIcons();
+
+  
+</script>
+</html>

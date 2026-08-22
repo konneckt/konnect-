@@ -1,0 +1,235 @@
+/* header section */
+.header-section{
+    background-color:var(--bg-header);
+    position: fixed;
+height: 90px;
+padding-bottom: 30px;
+padding-top: 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+ z-index: 999;
+
+
+}
+
+
+/* app logo section */
+.app-section{
+    display: flex;
+    align-items: center;
+  width: 200px;
+}
+
+.konnect-icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    margin-top: 30px;
+     margin-left: 10px;
+}
+
+.KONNECT-app-name{
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 25px;
+    margin-top: 40px;
+margin-left: 2px;
+
+
+}
+
+
+/* search bar section*/
+.searchbar-container{
+display: flex;
+flex: 1;
+align-items: center;
+justify-content: center;
+    
+}
+
+.search-bar{
+ flex: 1;
+ outline: none;
+ color:var(--border);
+ 
+ border: 1px solid var(--border);
+ padding: 10px 20px 10px 20px;
+background-color: var(--side-bar);
+border-top-left-radius: 20px;
+border-bottom-left-radius: 20px;
+display: flex;
+flex-direction: column;
+margin-top: 40px;
+margin-left: 50px;
+
+}
+.search-bar::placeholder{
+   color:var(--border);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.search-bar:focus{
+     border: 1px solid white;
+}
+.search-icon-container{
+    background-color: #222222;
+    border: 1px solid var(--border);
+    padding: 19px 20px 19px 20px;
+    border-top-right-radius: 20px;
+border-bottom-right-radius: 20px;
+position: relative;
+cursor: pointer;
+margin-top: 40px;
+}
+.search-icon{
+    position: absolute;
+    width: 20px;
+    top: 10px;
+    right: 10px;
+}
+.search-icon-container .drop-down-text{
+color: var(--text-main);
+background-color: #1a1a1a;
+padding: 4px 5px 3px 4px;
+position: absolute;
+white-space: nowrap;
+border-radius: 2px;
+bottom: -35px;
+right: -40px;
+opacity: 0;
+pointer-events: none;
+transition: all 0.2s ease;
+font-size: 12px;
+font-weight: 500;
+z-index: 5;
+border-radius: 4px;
+}
+.search-icon-container:hover .drop-down-text{
+opacity: 1;
+}
+/* profile notifications section */
+.profile-notifications-header{
+    background-color: var(--bg-header);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+ align-items: center;
+   width: 300px;
+
+}
+.icon-notifications-btn{
+    position: relative;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.icon-notifications-btn::after{
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-30px) translateY(5px);
+    background-color:#1a1a1a ; 
+    color: var(--text-main);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    z-index: 1;
+    
+}
+.icon-notifications-btn:hover::after{
+    opacity: 1;
+    transform: translateX(-30px) translateY(0);
+}
+.notifications{
+    width: 35px;
+    height: 35px;
+    stroke-width: 1.5;
+    color: white;
+}
+
+.notifications-update{
+position: absolute;
+top: 4px;
+right: 5px;
+background-color: #ff3b30;
+color: var(--text-main);
+font-size: 10px;
+font-weight: 700;
+min-width: 16px;
+height: 18px;
+padding: 0 4px;
+border-radius: 999px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 2px solid #000;
+line-height: 1;
+}
+.profile-container{
+width: 50px;
+height: 50px;
+    border-radius: 50px;
+    background-color: var(--text-main);
+   margin-left:20px ;
+   margin-top: 35px;
+   position: relative;
+}
+
+.user-icon{
+    height: 40px;
+    width: 50px;
+    stroke-width: 3;
+    color: grey;
+position: absolute;
+top: 5px;
+}
+
+.more-icon{
+    position: absolute;
+    color: var(--text-main);
+    stroke-width: 2;
+    width: 20px;
+    height: 20px;
+   top: -30px;
+    right: -10px;
+    border-radius:50% ;
+    background-color: var(--side-bar);
+    border: 2px solid var(--border);
+    display: none;
+}
+.more-icon:hover{
+    background-color: rgb(128, 128, 128,0.3);
+}
+.login{
+    color: var(--text-main);
+    background-color: #4a90e2;
+    padding: 10px 30px 10px 30px;
+    color: var(--text-main);
+    margin-left: 20px;
+    margin-top: 40px;
+    border: none;
+    cursor: pointer;
+    border-radius: 40px;
+   font-size: 15px;
+   font-weight: 700;
+}
+.login:hover{
+    color:var(--text-main);
+    background-color: rgb(56, 56, 223); 
+
+}
