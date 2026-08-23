@@ -1,0 +1,79 @@
+@media (max-width: 768px) {
+    .header-section {
+        width: 100% !important;
+        display: flex !important; 
+        align-items: center !important; 
+        box-sizing: border-box !important; 
+        padding: 10px 12px !important;
+        
+    }
+
+    .search-bar {
+        flex: 1 1 0 !important;
+        margin-left: 0 !important;
+        min-width: 0 !important; 
+    }
+            
+    .search-icon-container {
+        width: auto !important; 
+        display: block !important; 
+    }
+
+    .notifications {
+        width: 25px !important;
+        height: 25px !important;
+        margin-left: 3px !important;
+        flex-shrink: 0 !important; 
+        display: none !important;
+    }
+
+    .profile-container {
+        width: 40px !important;
+        height: 40px !important;
+        margin-left: 0px !important;
+        position: relative !important;
+        flex-shrink: 0 !important; 
+        margin-right: 40px;
+  
+    }
+
+    .profile-notifications-header {
+    width: 65px;
+   
+}
+    .user-icon {
+        height: 30px !important;
+        width: 30px !important;
+        left: 3px !important;
+        top: 4px !important;
+    }
+
+    .konnect-icon {
+       
+        display: none !important;
+    }
+
+    .drop-down-text {
+        display: none !important;
+    }
+
+    .icon-notifications-btn::after {
+        display: none !important;
+    }
+
+    .more-icon {
+        position: absolute !important;
+        right: 5px !important; 
+        top: -30px !important; 
+        display: block !important;
+    }
+
+  
+    .notifications-update {
+    display: none;
+}
+
+ .KONNECT-app-name {
+    display: none;
+  }
+}

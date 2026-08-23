@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KONNECT</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07090F;
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.08);
+  --text: #FFFFFF;
+  --text-muted: rgba(255,255,255,0.6);
+  --accent: #A8D5FF;
+  --glow: 0 0 20px rgba(168,213,255,0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding-bottom: 80px;
+  animation: fadeIn 0.6s ease;
+}
+@keyframes fadeIn { from {opacity:0; transform: translateY(10px)} to {opacity:1; transform: translateY(0)} }
+
+/* HEADER */
+.app-header { padding: 16px; position: sticky; top: 0; background: rgba(7,9,15,0.8); backdrop-filter: blur(20px); z-index: 10; }
+.app-header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+.tagline { font-size: 12px; color: var(--text-muted); margin: 2px 0 12px; }
+
+/* SEARCH */
+.search-bar { display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); padding: 12px; border-radius: 14px; }
+.search-bar input { background: none; border: none; color: var(--text); width: 100%; outline: none; }
+
+/* SECTIONS */
+.container { padding: 0 16px; }
+.section-title { font-size: 18px; font-weight: 600; margin: 24px 0 12px; }
+
+/* TRENDING TABS */
+.trend-tabs { display: flex; gap: 8px; overflow-x: auto; padding: 8px 0 16px; }
+.trend-tabs::-webkit-scrollbar { display: none; }
+.tab {
+  background: var(--card); border: 1px solid var(--border);
+  color: var(--text-muted); padding: 8px 14px; border-radius: 20px;
+  white-space: nowrap; font-size: 14px; cursor: pointer; transition: all 0.3s;
+}
+.tab.active {
+  background: rgba(168,213,255,0.15); border-color: var(--accent);
+  color: var(--accent); font-weight: 600; box-shadow: var(--glow);
+  transform: scale(1.05);
+}
+
+/* CARDS */
+.listing-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden; margin-bottom: 12px;
+  animation: slideUp 0.4s ease;
+  transition: transform 0.3s, border 0.3s;
+}
+.listing-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+@keyframes slideUp { from {opacity:0; transform: translateY(20px)} to {opacity:1; transform: translateY(0)} }
+.listing-card img { width: 100%; height: 160px; object-fit: cover; }
+.listing-info { padding: 12px; }
+.listing-info h3 { font-size: 16px; margin-bottom: 4px; }
+.meta { font-size: 13px; color: var(--text-muted); }
+
+/* CREATE POST */
+.post-form {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 16px; margin: 24px 0;
+  animation: fadeIn 0.5s ease;
+}
+.post-helper { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px; }
+.post-type-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.btn-business,.btn-community {
+  padding: 12px; border-radius: 12px; border: 1px solid var(--border);
+  background: rgba(168,213,255,0.1); color: var(--accent); font-weight: 600; cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-community { background: rgba(255,255,255,0.04); color: white; }
+.btn-business:hover,.btn-community:hover { transform: translateY(-2px); }
+.post-form textarea {
+  width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px; color: var(--text); margin-top: 12px;
+  display: none; animation: fadeIn 0.3s;
+}
+.btn-primary {
+  width: 100%; padding: 12px; margin-top: 10px; border-radius: 12px;
+  border: none; background: var(--accent); color: #000; font-weight: 700;
+  cursor: pointer; display: none; animation: fadeIn 0.3s;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(7,9,15,0.8); backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border); display: flex;
+  justify-content: space-around; padding: 10px 0;
+}
+.nav-item { text-align: center; font-size: 11px; color: var(--text-muted); cursor: pointer; }
+.nav-item.active { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <h1>KONNECT</h1>
+  <p class="tagline">Discover businesses. Ask questions. Chat with locals.</p>
+  <div class="search-bar">
+    <span>🔍</span>
+    <input type="text" placeholder="Search businesses, people, or chats...">
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- TRENDING NOW -->
+  <h2 class="section-title">Trending Now</h2>
+  <div class="trend-tabs">
+    <button class="tab active" onclick="showTrend('searched', this)">🔥 Most Searched</button>
+    <button class="tab" onclick="showTrend('reviewed', this)">⭐ Best Reviewed</button>
+    <button class="tab" onclick="showTrend('rising', this)">📈 Rising</button>
+    <button class="tab" onclick="showTrend('near', this)">📍 Near You</button>
+  </div>
+  <div id="trendContent"></div>
+
+  <!-- CREATE POST -->
+  <div class="post-form">
+    <h3 style="font-size:16px; margin-bottom:6px;">Create Post</h3>
+    <p class="post-helper">
+      <strong>Market your business</strong> and show up first when people near you search.
+      Or <strong>ask the community</strong> for recommendations.
+    </p>
+    <div class="post-type-btns">
+      <button class="btn-business" onclick="showForm('business')">📢 Market Business</button>
+      <button class="btn-community" onclick="showForm('community')">💬 Ask Community</button>
+    </div>
+    <textarea id="postInput" rows="3" placeholder=""></textarea>
+    <button class="btn-primary" id="submitPostBtn" onclick="submitPost()">Post</button>
+  </div>
+
+</div>
+
+<nav class="bottom-nav">
+  <div class="nav-item active">🏠<div>Home</div></div>
+  <div class="nav-item">🔍<div>Search</div></div>
+  <div class="nav-item">💬<div>Chats</div></div>
+  <div class="nav-item">👤<div>Profile</div></div>
+</nav>
+
+<script>
+const trendingData = {
+  searched: [
+    {name: "The Silk Cafe", img: "https://picsum.photos/600/400?10", meta: "📍 VI • 1.2k searches today", rating: "⭐ 4.8"},
+    {name: "Bean & Co", img: "https://picsum.photos/600/400?11", meta: "📍 Lekki • 980 searches today", rating: "⭐ 4.7"}
+  ],
+  reviewed: [
+    {name: "Book Haven", img: "https://picsum.photos/600/400?12", meta: "⭐ 4.9 • 230 reviews", rating: ""},
+    {name: "Green Bowl", img: "https://picsum.photos/600/400?13", meta: "⭐ 4.8 • 180 reviews", rating: ""}
+  ],
+  rising: [
+    {name: "Glow Spa", img: "https://picsum.photos/600/400?14", meta: "📈 +320% this week", rating: "⭐ 4.6"},
+    {name: "Tech Hub", img: "https://picsum.photos/600/400?15", meta: "📈 +210% this week", rating: "⭐ 4.5"}
+  ],
+  near: [
+    {name: "FitZone Gym", img: "https://picsum.photos/600/400?16", meta: "📍 0.8km away • Hot now", rating: "⭐ 4.6"},
+    {name: "Yoga Loft", img: "https://picsum.photos/600/400?17", meta: "📍 1.1km away • Hot now", rating: "⭐ 4.7"}
+  ]
+}
+
+function showTrend(type, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+
+  const content = document.getElementById('trendContent');
+  content.innerHTML = trendingData[type].map(item => `
+    <div class="listing-card">
+      <img src="${item.img}">
+      <div class="listing-info">
+        <h3>${item.name}</h3>
+        <p class="meta">${item.meta}</p>
+        <p class="meta">${item.rating}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+let postType = '';
+function showForm(type) {
+  postType = type;
+  const input = document.getElementById('postInput');
+  const btn = document.getElementById('submitPostBtn');
+
+  // HIDE then SHOW animation
+  input.style.display = 'none';
+  btn.style.display = 'none';
+
+  setTimeout(() => {
+    if(type === 'business') {
+      input.placeholder = "Promote your business... e.g. '50% off coffee today at The Silk Cafe VI'";
+    } else {
+      input.placeholder = "Ask the community... e.g. 'Best gym with pool in Lekki?'";
+    }
+    input.style.display = 'block';
+    btn.style.display = 'block';
+  }, 100);
+}
+
+function submitPost() {
+  const text = document.getElementById('postInput').value;
+  if(!text) return alert('Write something first!');
+  alert(`Posted as ${postType}: ${text}`);
+  document.getElementById('postInput').value = '';
+  document.getElementById('postInput').style.display = 'none';
+  document.getElementById('submitPostBtn').style.display = 'none';
+}
+
+// Load default
+showTrend('searched', document.querySelector('.tab'));
+</script>
+
+</body>
+</html>
+
+
+/* general scetion */
+@media (max-width: 768px) {
+ body {
+        padding-top: 120px !important; /* added px */
+        padding-left: 0 !important;
+        padding-bottom: 80px !important; /* add space for bottom bar */
+    }
+
+}
+
+/* sidebar scetion */
+@media (max-width: 768px) {
+
+  .sidebar-section {
+    position: fixed !important;
+    bottom: 0 !important;
+    top: auto !important; 
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 70px !important;
+    background: rgba(15, 15, 15, 0.65); 
+    backdrop-filter: blur(24px) saturate(180%); 
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.3); 
+    padding-bottom: env(safe-area-inset-bottom);
+    display: flex !important;
+    flex-direction: row !important; 
+    justify-content: space-around !important;
+    align-items: center !important;
+    z-index: 10000 !important;
+  }
+
+  .sidebar-section-1 {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+  }
+
+  .sidebar-section-2 {
+    display: none !important; 
+  }
+
+  /* FIXED: KILLED HUGE ICONS */
+  .icon-sidebar-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    font-size: 11px !important; /* was 50px */
+    color: #a0a0a0 !important; /* gray */
+    text-decoration: none;
+    transform: none !important; /* NO ZOOM */
+    transition: none !important; /* NO ANIMATION */
+  }
+
+  /* FIXED: NORMAL ICON SIZE */
+  .icon-sidebar-btn svg, 
+  .icon-sidebar-btn .home-icon {
+    width: 26px !important; /* was 74px */
+    height: 26px !important;
+    stroke: currentColor;
+  }
+  
+  /* ACTIVE STATE = BLUE */
+  .icon-sidebar-btn.active {
+    color: #2563eb !important;
+  }
+  .icon-sidebar-btn.active svg {
+    stroke: #2563eb !important;
+    fill: #2563eb !important;
+  }
+
+  .tooltip {
+    display: none !important; 
+  }
+}
+
+  /*  header section */
+@media (max-width: 768px) {
+    .header-section {
+        width: 100% !important;
+        display: flex !important; 
+        align-items: center !important; 
+        box-sizing: border-box !important; 
+        padding: 10px 12px !important;
+        position: fixed !important; /* keep header on top */
+        top: 0 !important;
+        background: white !important;
+        z-index: 9999 !important;
+    }
+
+    .search-bar {
+        flex: 1 1 0 !important;
+        margin-left: 0 !important;
+        min-width: 0 !important; 
+    }
+            
+    .search-icon-container {
+        width: auto !important; 
+        display: block !important; 
+    }
+
+    .notifications {
+        width: 25px !important;
+        height: 25px !important;
+        margin-left: 3px !important;
+        flex-shrink: 0 !important; 
+        display: none !important;
+    }
+
+    .profile-container {
+        width: 40px !important;
+        height: 40px !important;
+        margin-left: 0px !important;
+        position: relative !important;
+        flex-shrink: 0 !important; 
+    }
+
+    .user-icon {
+        height: 30px !important;
+        width: 30px !important;
+        left: 3px !important;
+        top: 4px !important;
+    }
+
+    .konnect-icon {
+        width: 40px !important;
+        height: 40px !important;
+        flex-shrink: 0 !important;
+        margin-left: 0; 
+    }
+
+    .drop-down-text {
+        display: none !important;
+    }
+
+    .icon-notifications-btn::after {
+        display: none !important;
+    }
+
+    .more-icon {
+        position: absolute !important;
+        right: 5px !important; 
+        top: -30px !important; 
+        display: block !important;
+    }
+
+    .notifications-update {
+        display: none;
+    }
+
+    .KONNECT-app-name {
+        display: none;
+    }
+}
+
+/* main scetion */
+@media (max-width: 768px) {
+  
+  .main-section-2 {
+    position: sticky !important;
+    top: 54px !important; 
+    background: white !important;
+    z-index: 999 !important;
+    padding-top: 8px !important;
+    border-bottom: 1px solid #eee !important;
+  }
+
+  .search-experience-pick-border {
+    display: flex !important;
+    gap: 10px !important;
+    overflow-x: auto !important; 
+    overflow-y: hidden !important;
+    padding: 8px 16px 12px 16px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+  }
+
+  .search-experience-pick-border::-webkit-scrollbar {
+    display: none;
+  }
+
+  .border-pick, 
+  .border-pick-3 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: #f5f5f5 !important;
+    border-radius: 16px !important;
+    padding: 10px 14px !important;
+    min-width: 80px !important;
+    flex-shrink: 0 !important;
+    scroll-snap-align: start !important;
+  }
+
+  .categories-under-text, 
+  .categories-under-text-2 {
+    font-size: 0.8rem !important;
+    white-space: nowrap !important; 
+  }
+
+  .border-pick-2 {
+    display: none !important;
+  }
+
+  .user-experience-border {
+    padding: 0px 10px 8px 10px; /* more padding */
+    margin-top: 90px;
+  }
+
+  .user-experience-text {
+    font-size: 15px;
+  }
+
+  /* FIXED: 2 COLUMN GRID LIKE WHATSAPP */
+  .border1-user-experience-extra{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* 2 per row */
+    gap: 10px !important;
+  }
+  
+  /* FIXED: NO STRETCH, NO ZOOM */
+  .image-border{
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important; /* SQUARE */
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    background: #e5e5e5 !important;
+  }
+
+  .image-border img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* crops, no stretch */
+    object-position: center !important;
+    display: block !important;
+    transform: none !important; /* NO ZOOM */
+    transition: none !important; /* NO ANIMATION */
+  }
+
+  /* KILLED YOUR OLD FIXED WIDTHS */
+  .image-border:nth-child(1),
+  .image-border:nth-child(3),
+  .image-border:nth-child(4){
+    width: 100% !important;
+  }
+
+  .login {
+    display: none !important;
+  }
+
+  .border1-text {
+    font-size: 25px;
+  }
+
+  .border2-text {
+    font-size: 15px;
+  }
+
+  .trending-view-container {
+    grid-template-columns: 1fr ;
+    width: 100%;
+    height: 50px;
+    margin-left: 10px;
+  }
+}
+
+/* 1 column for very small phones */
+@media (max-width: 420px) {
+  .border1-user-experience-extra {
+    grid-template-columns: 1fr !important;
+  }
+}

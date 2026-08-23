@@ -19,7 +19,7 @@ z-index: 10000;
    width: 70px;
    height: 50px;
    flex: 1;
-   margin-top: 10px;
+   margin-top: 3px;
   
 }
 
@@ -39,9 +39,9 @@ z-index: 10000;
 .icon-sidebar-btn .home-icon{
     stroke-width: 2;
 color: rgb(143, 137, 137);
-    width: 25px;
-    height: 25px;
-    margin:20px 0px 10px 14px;
+    width: 23px;
+    height: 23px;
+    margin:20px 0px 10px 24px;
 
 }
 
@@ -87,7 +87,10 @@ color: rgb(143, 137, 137);
     margin-bottom: 20px;
     width: 53px;
     height: 200px;
-    margin-left: 5px;
+    margin-left: 2px;
 }
 
 
+.active-none{
+    display: none;
+}
