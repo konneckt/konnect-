@@ -17,6 +17,7 @@
     .search-icon-container {
         width: auto !important; 
         display: block !important; 
+        margin-left: -2px;
     }
 
     .notifications {

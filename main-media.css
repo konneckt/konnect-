@@ -85,10 +85,8 @@
 }
 
 .border-pick {
-background-color: #000;
-    height: 82px;
-    width: 75px;
-  border: none;
+
+  display: none !important;
 }
   .border-pick-2 {
     display: none !important;
@@ -121,6 +119,8 @@ height: 350px;
 
 .image-border:nth-child(2) .popular-image {
     height: 300px;
+    transform: none !important;
+    
 }
 .image-border-2 {
     display: none;

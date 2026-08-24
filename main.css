@@ -370,7 +370,7 @@ position: relative;
 }
 .image-border:nth-child(2) .popular-image{
     height: 380px;
-    opacity: 0.08;
+    opacity: 0.2;
 }
 
 .image-border:hover {
