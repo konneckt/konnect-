@@ -133,8 +133,13 @@ height: 350px;
 }
 .small-text {
  
-    font-size: 35px;
-    
+    font-size: 30px;
+  
+}
+.small-text-border {
+   
+    height: 40px;
+
 }
 
 .border1-text {
@@ -202,13 +207,15 @@ height: 350px;
 
 .small-text-cancel{
   display: block !important;
+  stroke-width: 5;
+  top: 5px;
 }
 .trending-info-personal-2-viewPhoto-btn {
 width: 120%;
 
 }
 .trending-info-personal-2-direction-btn {
-width: 105%;
+width: 110%;
 }
 
 .people-nearby-container-main{
@@ -233,5 +240,41 @@ width: 105%;
   scrollbar-width: none !important; 
   -ms-overflow-style: none !important;
 }
+.trending-info-personal-2-direction-btn-icon {
 
+    right: 20px;
+    
+}
+
+.city-chat-border {
+    width: 100%;
+}
+.city-btn {
+    width: 80%;
+    right: 55px;
+}
+.city-live {
+    bottom: 5px;
+    right: 5px;
+}
+
+.recently-added-icon {
+ display: none !important;
+}
+
+.recently-added-icon-2 {
+ display: none !important;
+}
+
+.recently-added-container{
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 15px;
+     -webkit-overflow-scrolling: touch !important;
+  scroll-behavior: smooth !important;
+  flex-wrap: nowrap;
+}
+.recently-added-container::-webkit-scrollbar {
+  display: none !important;
+}
   }
