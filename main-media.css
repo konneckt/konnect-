@@ -239,6 +239,7 @@ width: 110%;
 .people-nearby-border {
   scrollbar-width: none !important; 
   -ms-overflow-style: none !important;
+  width: 70%;
 }
 .trending-info-personal-2-direction-btn-icon {
 
@@ -273,8 +274,32 @@ width: 110%;
      -webkit-overflow-scrolling: touch !important;
   scroll-behavior: smooth !important;
   flex-wrap: nowrap;
+  width: 100%;
 }
 .recently-added-container::-webkit-scrollbar {
   display: none !important;
 }
+/* trending near you */
+
+.for-you-icon {
+ display: none !important;
+}
+
+.for-you-icon-2 {
+ display: none !important;
+}
+
+.for-you-container{
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 15px;
+     -webkit-overflow-scrolling: touch !important;
+  scroll-behavior: smooth !important;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.for-you-container::-webkit-scrollbar {
+  display: none !important;
+}
+
   }
