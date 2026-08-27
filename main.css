@@ -1316,7 +1316,7 @@ border-radius: 10px;
     color: var(--text-main);
 }
 .review-container{
-    padding: 10px 30px 10px 30;
+    padding: 10px 30px 30px 30;
   border-top:1px solid var(--border) ;
 border-bottom:1px solid var(--border) ;
   margin-top: 45px;
@@ -1419,4 +1419,34 @@ right: -100px;
     bottom: 0;
     top: 20px;
     position: fixed;
+}
+.write-review-btn{
+    padding: 10px 20px 10px 20px;
+    background-color: var(--side-bar);
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-left: 180px;
+    margin-top: 10px;
+   transition: all 0.2s ease;
+}
+.write-review-btn:hover{
+background-color: #413e3e;
+color: var(--text-main);
+transform: scale(0.9);
+}
+
+.write-review-btn:hover .write-review-icon{
+    fill: #000;
+}
+.write-review-icon{
+    color: var(--text-main);
+    fill: var(--text-main);
+    stroke-width: 2;
+    width: 20px;
+    height: 20px;
 }

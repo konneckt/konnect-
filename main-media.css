@@ -357,11 +357,33 @@ margin-top: 20px;
    width: 100%;
 }
 .review-summary {
-    width: 73%;
+    width: 70%;
+}
+.stars {
+  
+    right: -85px;
 }
 .container-2 {
  
     width: 100%;
 
+}
+.search-result-btn-2 {
+    display: none;
+}
+.search-result-btn {
+    display: none;
+}
+.write-review-btn {
+   
+    margin-left: 70px;
+   
+      padding: 5px 15px 5px 15px;
+        font-size: 15px;
+}
+.write-review-icon{
+ 
+    width: 15px;
+    height: 15px;
 }
   }
