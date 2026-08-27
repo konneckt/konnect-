@@ -22,9 +22,7 @@ body{
     background-color:var(--bg-app);
   padding-top: 80px;
   padding-left: 80px;
-  padding-bottom: 1000px;
+  padding-bottom: 400px;
   overflow-x: hidden;
 }
 
-
-/*  mobile view responsive */

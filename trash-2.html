@@ -3,197 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PlaceFinder - Discover</title>
+<title>Review Summary</title>
+<script src="https://unpkg.com/lucide@latest"></script>
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-  body { background: #f5f5f5; padding-bottom: 80px; color: #111; }
+  body { background: #f5f5f5; padding: 20px; }
 
-  header { background: white; padding: 16px; position: sticky; top: 0; z-index: 10; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-  .city-selector { font-weight: 700; font-size: 18px; }
-
-  section { margin: 20px 0; padding: 0 16px; }
-  h2 { font-size: 18px; margin-bottom: 12px; font-weight: 700; }
-  h2 span { font-weight: 500; font-size: 14px; color: #666; }
-
-  /* CITY CHAT CARD */
-  .city-chat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px; border-radius: 16px; margin: 16px; cursor: pointer; }
-  .chat-header { font-weight: 700; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
-  .live { background: #00ff88; color: black; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
-  .chat-msg { font-size: 14px; opacity: 0.95; margin: 6px 0; }
-  .join-btn { background: white; color: #667eea; border: none; padding: 10px 16px; border-radius: 20px; font-weight: 700; margin-top: 10px; width: 100%; }
-
-  /* HORIZONTAL SCROLL */
-  .horizontal-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
-
-  /* NEW: TRENDING PLACE CARD WITH COMMENT */
-  .trend-place-card {
-    background: white;
-    border-radius: 16px;
-    min-width: 280px;
+  .review-summary { 
+    background: white; 
+    padding: 20px; 
+    border-radius: 16px; 
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    overflow: hidden;
+    max-width: 400px;
   }
-  .trend-place-card img { width: 100%; height: 120px; object-fit: cover; }
-  .trend-place-content { padding: 12px; }
-  .trend-place-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px; }
-  .trend-place-name { font-weight: 700; font-size: 15px; }
-  .trend-badge { background: #ff3b30; color: white; font-size: 10px; padding: 3px 8px; border-radius: 12px; font-weight: 700; }
-  .trend-place-meta { font-size: 12px; color: #666; margin-bottom: 8px; display: flex; gap: 10px; }
   
-  /* TOP COMMENT */
-  .top-comment {
-    background: #f7f7f7;
-    border-radius: 10px;
-    padding: 8px;
-    margin-top: 8px;
+  /* TOP PART */
+  .review-header { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    margin-bottom: 16px; 
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
   }
-  .comment-header { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
-  .comment-header img { width: 20px; height: 20px; border-radius: 50%; }
-  .comment-user { font-weight: 600; font-size: 12px; }
-  .comment-text { font-size: 13px; line-height: 1.3; margin-bottom: 6px; }
-  .comment-stats { font-size: 11px; color: #667eea; display: flex; gap: 10px; font-weight: 600; }
+  .avg-score { 
+    font-size: 48px; 
+    font-weight: 800; 
+    line-height: 1;
+    color: #111;
+  }
+  .stars { 
+    color: #FFB400; 
+    font-size: 18px; 
+    margin-bottom: 4px;
+  }
+  .total-reviews { 
+    font-size: 13px; 
+    color: #666; 
+  }
 
-  /* PEOPLE CARD */
-  .person-card { background: white; border-radius: 12px; padding: 12px; min-width: 100px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-  .avatar { width: 60px; height: 60px; border-radius: 50%; position: relative; margin: 0 auto 8px; }
-  .avatar img { width: 100%; height: 100%; border-radius: 50%; }
-  .avatar.online::after { content: ''; position: absolute; bottom: 2px; right: 2px; width: 14px; height: 14px; background: #00ff88; border-radius: 50%; border: 2px solid white; }
-
-  /* FOR YOU VERTICAL CARDS */
-  .foryou-card { background: white; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 12px; }
-  .foryou-card img { width: 100%; height: 180px; border-radius: 8px; object-fit: cover; }
+  /* RATING BARS */
+  .rating-bar { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    margin: 8px 0; 
+    font-size: 13px;
+    color: #444;
+  }
+  .rating-label { 
+    width: 40px; 
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .bar-bg { 
+    flex: 1; 
+    height: 8px; 
+    background: #f0f0f0; 
+    border-radius: 10px; 
+    overflow: hidden; 
+  }
+  .bar-fill { 
+    height: 100%; 
+    background: #FFB400; 
+    border-radius: 10px; 
+    width: 0%; /* JS will set this */
+  }
+  .rating-count { 
+    width: 30px; 
+    text-align: right; 
+    color: #666; 
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="city-selector">📍 <span>Lagos</span> ▼</div>
-</header>
-
-<!-- 1. CITY CHAT CARD -->
-<section class="city-chat-card" onclick="alert('Opening Lagos City Chat')">
-  <div class="chat-header">💬 LAGOS CITY CHAT <span class="live">247 online</span></div>
-  <div id="cityMessages"></div>
-  <button class="join-btn">Join the gist →</button>
-</section>
-
-<!-- 2. TRENDING NEAR YOU - RESTAURANTS/CAFES -->
-<section>
-  <h2>🔥 Trending Near You <span id="trendMeta">in Yaba • 5km</span></h2>
-  <div class="horizontal-scroll" id="trendingList"></div>
-</section>
-
-<!-- 3. PEOPLE NEARBY -->
-<section>
-  <h2>👥 People Nearby</h2>
-  <div class="horizontal-scroll" id="peopleList"></div>
-</section>
-
-<!-- 4. RECENTLY ADDED -->
-<section>
-  <h2>✨ Recently Added</h2>
-  <div class="horizontal-scroll" id="recentList"></div>
-</section>
-
-<!-- 5. FOR YOU -->
-<section>
-  <h2>For You</h2>
-  <div id="forYouList"></div>
-</section>
-
-<script>
-// FAKE DATA
-let places = [
-  {id: 1, name: "Suya Spot Ikeja", type: "Restaurant", views24h: 200, saves24h: 40, reviews24h: 12, checkins24h: 35, lastActivity: 2, distance: 1.2, img: "https://picsum.photos/400/200?1"},
-  {id: 2, name: "Cubana Lagos", type: "Club", views24h: 500, saves24h: 20, reviews24h: 8, checkins24h: 15, lastActivity: 1, distance: 3.5, img: "https://picsum.photos/400/200?2"},
-  {id: 3, name: "The Coffee Jar", type: "Cafe", views24h: 300, saves24h: 80, reviews24h: 25, checkins24h: 40, lastActivity: 0.5, distance: 2.1, img: "https://picsum.photos/400/200?3"},
-  {id: 4, name: "Landmark Beach", type: "Hangout", views24h: 150, saves24h: 60, reviews24h: 20, checkins24h: 50, lastActivity: 0.5, distance: 4.8, img: "https://picsum.photos/400/200?4"},
-];
-
-// NEW: COMMENTS FOR EACH PLACE
-let placeComments = {
- 1: {user: "Tolu", avatar: "https://i.pravatar.cc/20?1", text: "Their suya and cold beer is undefeated. Go on a Friday", likes: 45, replies: 12},
- 2: {user: "Ada", avatar: "https://i.pravatar.cc/20?2", text: "Too expensive but the vibes at night >>>", likes: 67, replies: 23},
-  3: {user: "Emeka", avatar: "https://i.pravatar.cc/20?3", text: "Best flat white in Yaba. Worked here all day", likes: 89, replies: 8},
-  4: {user: "Kemi", avatar: "https://i.pravatar.cc/20?4", text: "Packed today but worth it. Sunset is crazy", likes: 34, replies: 5},
-};
-
-let people = [
-  {id: 1, name: "Ada", online: true, posted24h: true, mutuals: 3, distance: 0.3, img: "https://i.pravatar.cc/60?1", lastSeen: 5},
-  {id: 2, name: "Tolu", online: false, posted24h: true, mutuals: 1, distance: 1.1, img: "https://i.pravatar.cc/60?2", lastSeen: 120},
-];
-
-const cityMessages = [
-  {user: "Tolu", text: "Best suya spot rn??", time: "2m"},
-  {user: "Ada", text: "Landmark is packed today", time: "5m"},
-];
-
-// ALGOS
-function calculateTrendingScore(p) { 
-  return ((p.views24h * 3) + (p.saves24h * 5) + (p.reviews24h * 4) + (p.checkins24h * 6)) / (p.lastActivity + 1); 
-}
-function calculatePeopleScore(p) { let s=0; if(p.online)s+=10; if(p.posted24h)s+=5; s+=p.mutuals*3; s-=p.distance*2; return s; }
-
-// RENDER FUNCTIONS
-function renderCityChat() {
-  document.getElementById('cityMessages').innerHTML = cityMessages.map(m => 
-    `<div class="chat-msg"><b>${m.user}</b>: ${m.text} <span style="opacity:0.7; font-size:12px;">${m.time}</span></div>`
-  ).join('');
-}
-
-function renderTrending() {
-  const userArea = "Yaba";
-  const radius = 5;
-  
-  const sorted = places.filter(p=>p.distance<radius).sort((a,b)=>calculateTrendingScore(b)-calculateTrendingScore(a));
-  
-  // Update header with count
-  document.getElementById('trendMeta').innerText = `in ${userArea} • ${radius}km • ${sorted.length} hot spots`;
-  
-  document.getElementById('trendingList').innerHTML = sorted.map(p=>{
-    const comment = placeComments[p.id];
-    return `
-    <div class="trend-place-card" onclick="alert('Open ${p.name} page')">
-      <img src="${p.img}">
-      <div class="trend-place-content">
-        <div class="trend-place-header">
-          <div class="trend-place-name">${p.name}</div>
-          <div class="trend-badge">HOT</div>
-        </div>
-        <div class="trend-place-meta">
-          <span>${p.type}</span>
-          <span>${p.distance}km</span>
-          <span>${p.checkins24h} here</span>
-        </div>
-        
-        <div class="top-comment">
-          <div class="comment-header">
-            <img src="${comment.avatar}">
-            <span class="comment-user">${comment.user}</span>
-          </div>
-          <div class="comment-text">${comment.text}</div>
-          <div class="comment-stats">
-            <span>❤️ ${comment.likes}</span>
-            <span>💬 ${comment.replies} replies</span>
-          </div>
-        </div>
-      </div>
+<div class="review-summary">
+  <!-- HEADER -->
+  <div class="review-header">
+    <div class="avg-score">4.6</div> <!-- JS will update this -->
+    <div>
+      <div class="stars">★★★★☆</div> <!-- JS will update this -->
+      <div class="total-reviews">128 reviews</div> <!-- JS will update this -->
     </div>
-  `}).join('');
-}
+  </div>
 
-function renderPeople() {
-  const sorted = people.filter(p=>p.lastSeen<10080).sort((a,b)=>calculatePeopleScore(b)-calculatePeopleScore(a));
-  document.getElementById('peopleList').innerHTML = sorted.map(p=>`
-    <div class="person-card"><div class="avatar ${p.online?'online':''}"><img src="${p.img}"></div><div style="font-weight:600;">${p.name}</div></div>
-  `).join('');
-}
+  <!-- RATING BREAKDOWN BARS -->
+  <div class="rating-bar">
+    <span class="rating-label">5 <i data-lucide="star" size="12"></i></span>
+    <div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div> <!-- JS sets % -->
+    <span class="rating-count">90</span> <!-- JS sets count -->
+  </div>
 
-// RUN ALL
-renderCityChat();
-renderTrending();
-renderPeople();
-</script>
+  <div class="rating-bar">
+    <span class="rating-label">4 <i data-lucide="star" size="12"></i></span>
+    <div class="bar-bg"><div class="bar-fill" style="width:20%"></div></div>
+    <span class="rating-count">25</span>
+  </div>
 
+  <div class="rating-bar">
+    <span class="rating-label">3 <i data-lucide="star" size="12"></i></span>
+    <div class="bar-bg"><div class="bar-fill" style="width:7%"></div></div>
+    <span class="rating-count">9</span>
+  </div>
+
+  <div class="rating-bar">
+    <span class="rating-label">2 <i data-lucide="star" size="12"></i></span>
+    <div class="bar-bg"><div class="bar-fill" style="width:2%"></div></div>
+    <span class="rating-count">3</span>
+  </div>
+
+  <div class="rating-bar">
+    <span class="rating-label">1 <i data-lucide="star" size="12"></i></span>
+    <div class="bar-bg"><div class="bar-fill" style="width:1%"></div></div>
+    <span class="rating-count">1</span>
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
 </body>
 </html>

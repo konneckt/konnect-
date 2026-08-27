@@ -302,4 +302,66 @@ width: 110%;
   display: none !important;
 }
 
+.users-site-container{
+    right: 0;
+    width: 100%;
+}
+.user-site-text {
+
+    font-size: 20px;
+    
+}
+.user-site-3 {
+    font-size: 13px;
+ white-space: nowrap;
+}
+.container-2 {
+    background-color: green;
+
+    width: 500px;
+    height: 200px;
+   
+margin-top: 20px;
+    position: relative;
+}
+.search-experince-container-extra {
+  
+    left: 0;
+    width:100%;
+  
+  
+}
+
+.search-result-about-2{
+  
+    width: 100%;
+
+}
+
+.search-result-photo-text {
+   margin-left: 10px;
+}
+.search-result-photo-container{
+ overflow-x: auto;
+  overflow-y: hidden;
+ 
+     -webkit-overflow-scrolling: touch !important;
+  scroll-behavior: smooth !important;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.search-result-photo-container::-webkit-scrollbar {
+  display: none !important;
+}
+.review-container {
+   width: 100%;
+}
+.review-summary {
+    width: 73%;
+}
+.container-2 {
+ 
+    width: 100%;
+
+}
   }
