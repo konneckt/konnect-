@@ -3,124 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Review Summary</title>
+<title>HITS - Venue Actions</title>
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-  body { background: #f5f5f5; padding: 20px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  body { background: #f5f5f5; padding: 20px; display: flex; justify-content: center; }
 
-  .review-summary { 
-    background: white; 
-    padding: 20px; 
-    border-radius: 16px; 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+ .card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    width: 100%;
     max-width: 400px;
-  }
-  
-  /* TOP PART */
-  .review-header { 
-    display: flex; 
-    align-items: center; 
-    gap: 16px; 
-    margin-bottom: 16px; 
-    padding-bottom: 16px;
-    border-bottom: 1px solid #eee;
-  }
-  .avg-score { 
-    font-size: 48px; 
-    font-weight: 800; 
-    line-height: 1;
-    color: #111;
-  }
-  .stars { 
-    color: #FFB400; 
-    font-size: 18px; 
-    margin-bottom: 4px;
-  }
-  .total-reviews { 
-    font-size: 13px; 
-    color: #666; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   }
 
-  /* RATING BARS */
-  .rating-bar { 
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
-    margin: 8px 0; 
-    font-size: 13px;
-    color: #444;
+ .card-header h3 { font-size: 18px; margin-bottom: 8px; }
+ .card-header p { color:#666; font-size:14px; margin-bottom: 16px; }
+
+  /* Main Buttons */
+ .actions {
+    display: flex; gap: 10px; margin-bottom: 16px;
   }
-  .rating-label { 
-    width: 40px; 
-    display: flex;
-    align-items: center;
-    gap: 2px;
+ .btn {
+    flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 12px; border-radius: 12px; border: none; cursor: pointer;
+    font-weight: 600; font-size: 14px; transition: all 0.2s;
   }
-  .bar-bg { 
-    flex: 1; 
-    height: 8px; 
-    background: #f0f0f0; 
-    border-radius: 10px; 
-    overflow: hidden; 
+ .btn i { width: 18px; height: 18px; }
+ .btn-primary { background: #000; color: white; }
+ .btn-primary:hover { background: #222; }
+ .btn-secondary { background: #f0f0f0; color: #333; }
+ .btn-secondary:hover { background: #e5e5e5; }
+
+  /* Report Under */
+ .report-link {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    color: #ef4444; font-size: 13px; text-decoration: none;
+    padding: 8px; border-radius: 8px; cursor: pointer;
   }
-  .bar-fill { 
-    height: 100%; 
-    background: #FFB400; 
-    border-radius: 10px; 
-    width: 0%; /* JS will set this */
+ .report-link:hover { background: #fef2f2; }
+ .report-link i { width: 16px; height: 16px; }
+
+  /* Modal */
+ .modal {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5); z-index: 100;
+    align-items: center; justify-content: center;
   }
-  .rating-count { 
-    width: 30px; 
-    text-align: right; 
-    color: #666; 
+ .modal.show { display: flex; }
+ .modal-content {
+    background: white; border-radius: 16px; padding: 24px;
+    width: 90%; max-width: 320px;
   }
+ .modal-content h3 { margin-bottom: 8px; }
+ .modal-content p { color: #666; font-size: 14px; margin-bottom: 16px; }
+ .report-options button {
+    width: 100%; padding: 12px; margin-bottom: 8px;
+    border: 1px solid #eee; border-radius: 10px;
+    background: white; text-align: left; cursor: pointer;
+  }
+ .report-options button:hover { background: #f9f9f9; }
+ .modal-actions { display: flex; gap: 10px; margin-top: 16px; }
+ .btn-cancel { flex: 1; background: #f0f0f0; border: none; padding: 12px; border-radius: 10px; cursor: pointer; }
+ .btn-submit { flex: 1; background: #ef4444; color: white; border: none; padding: 12px; border-radius: 10px; cursor: pointer; }
 </style>
 </head>
 <body>
 
-<div class="review-summary">
-  <!-- HEADER -->
-  <div class="review-header">
-    <div class="avg-score">4.6</div> <!-- JS will update this -->
-    <div>
-      <div class="stars">★★★★☆</div> <!-- JS will update this -->
-      <div class="total-reviews">128 reviews</div> <!-- JS will update this -->
-    </div>
+<div class="card">
+  <div class="card-header">
+    <h3>Quilox Nightclub</h3>
+    <p>123 Ozumba Mbadiwe Ave, VI</p>
   </div>
 
-  <!-- RATING BREAKDOWN BARS -->
-  <div class="rating-bar">
-    <span class="rating-label">5 <i data-lucide="star" size="12"></i></span>
-    <div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div> <!-- JS sets % -->
-    <span class="rating-count">90</span> <!-- JS sets count -->
+  <!-- MAIN BUTTONS -->
+  <div class="actions">
+    <button class="btn btn-secondary">
+      <i data-lucide="navigation"></i> Direction
+    </button>
+    <button class="btn btn-primary">
+      <i data-lucide="play"></i> Start
+    </button>
+    <button class="btn btn-secondary">
+      <i data-lucide="share-2"></i> Share
+    </button>
   </div>
 
-  <div class="rating-bar">
-    <span class="rating-label">4 <i data-lucide="star" size="12"></i></span>
-    <div class="bar-bg"><div class="bar-fill" style="width:20%"></div></div>
-    <span class="rating-count">25</span>
-  </div>
-
-  <div class="rating-bar">
-    <span class="rating-label">3 <i data-lucide="star" size="12"></i></span>
-    <div class="bar-bg"><div class="bar-fill" style="width:7%"></div></div>
-    <span class="rating-count">9</span>
-  </div>
-
-  <div class="rating-bar">
-    <span class="rating-label">2 <i data-lucide="star" size="12"></i></span>
-    <div class="bar-bg"><div class="bar-fill" style="width:2%"></div></div>
-    <span class="rating-count">3</span>
-  </div>
-
-  <div class="rating-bar">
-    <span class="rating-label">1 <i data-lucide="star" size="12"></i></span>
-    <div class="bar-bg"><div class="bar-fill" style="width:1%"></div></div>
-    <span class="rating-count">1</span>
+  <!-- REPORT UNDER -->
+  <div class="report-link" id="reportBtn">
+    <i data-lucide="flag"></i> Report Account
   </div>
 </div>
 
-<script>lucide.createIcons();</script>
+<!-- REPORT MODAL -->
+<div class="modal" id="reportModal">
+  <div class="modal-content">
+    <h3>Report Account</h3>
+    <p>Why are you reporting Quilox Nightclub?</p>
+    <div class="report-options">
+      <button>Spam</button>
+      <button>Fake Account</button>
+      <button>Harassment</button>
+      <button>Inappropriate Content</button>
+      <button>Other</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="cancelBtn">Cancel</button>
+      <button class="btn-submit">Submit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  lucide.createIcons();
+
+  // Modal toggle
+  const reportBtn = document.getElementById('reportBtn');
+  const reportModal = document.getElementById('reportModal');
+  const cancelBtn = document.getElementById('cancelBtn');
+
+  reportBtn.onclick = () => reportModal.classList.add('show');
+  cancelBtn.onclick = () => reportModal.classList.remove('show');
+  reportModal.onclick = (e) => { if(e.target === reportModal) reportModal.classList.remove('show') }
+</script>
+
 </body>
 </html>
